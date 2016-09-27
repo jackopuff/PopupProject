@@ -12,6 +12,13 @@ public class PopupController
 		
 		public void start()
 		{
-			display.displayMessage("i like dank maymays");
+			int count = 0;
+			while (count<10)
+			{
+				
+			display.displayMessage("I like dank maymays.");
+			String answer = display.collectResponse("Type your question here");
+			count++;
+			}
 		}
 }
