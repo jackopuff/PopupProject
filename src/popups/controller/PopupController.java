@@ -1,23 +1,28 @@
 package popups.controller;
 
 import popups.view.PopupViewer;
+import java.util.List;
+import java.util.ArrayList;
+import popups.model.Popups;
 public class PopupController
 {
 		private PopupViewer display;
-		
+		private List <Popups> thingyList;
 		public PopupController()
 		{
 			display = new PopupViewer();
+			thingyList = new ArrayList<Popups>();
 		}
 		
 		public void start()
+		
 		{
+			learnLists();
 			String answer ="dat boi";
-			while(answer != null && !answer.equals(""))
+			while(answer != null && !isDouble(answer))
 			{
+				answer = display.collectResponse("you need to type in a double!");
 				
-			display.displayMessage("I like dank maymays.");
-			answer = display.collectResponse("Type your question here");
 			}
 		}
 		/**
@@ -26,7 +31,7 @@ public class PopupController
 		 * @param potentialValue The supplied String.
 		 * @return Whether the conversion was successful (true/false).
 		 */
-		private boolean isDouble(String potentialValue)
+				private boolean isDouble(String potentialValue)
 		{
 			Boolean validDouble = false;
 			try
@@ -36,7 +41,7 @@ public class PopupController
 			}
 			catch(NumberFormatException notDoubleError)
 			{
-				display.displayMessage("That was nota  double XD");
+				display.displayMessage("That was not a  double XD");
 			}
 			return validDouble;
 		}
@@ -64,4 +69,12 @@ public class PopupController
 			
 			return validInteger;
 		}
+	    private void learnLists()
+	    {
+	    	display.displayMessage("This is the size of the list" + thingyList.size());
+	    	Popups firstThingy = new Popups();
+	    	thingyList.add(firstThingy);
+	    	display.displayMessage("This is the size of the list" + thingyList.size());
+	    }
 }
+
