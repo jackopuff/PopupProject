@@ -13,12 +13,31 @@ public class PopupController
 		public void start()
 		{
 			String answer ="dat boi";
-			while(!answer.equals(""))
+			while(answer != null && !answer.equals(""))
 			{
 				
 			display.displayMessage("I like dank maymays.");
 			answer = display.collectResponse("Type your question here");
-			display.displayMessage(answer);
 			}
+		}
+		/**
+		 * Checks a supplied String value to see if it can be converted
+		 * into a double.
+		 * @param potentialValue The supplied String.
+		 * @return Whether the conversion was successful as a boolean value.
+		 */
+		private boolean isDouble(String potentialValue)
+		{
+		Boolean validDouble = false;
+		try
+		{
+			double testValue = Double.parseDouble(potentialValue);
+			validDouble = true;
+		}
+		catch(NumberFormatException notDoubleError)
+		{
+			display.displayMessage("That was nota  double XD");
+		}
+		return validDouble;
 		}
 }
